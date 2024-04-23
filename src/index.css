@@ -11,3 +11,96 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.container {
+  width: 70%;
+  padding: 2rem 0 5rem;
+  border: 2px solid #d9d9d9;
+  margin: 0 auto;
+  border-radius: 10px;
+  transform: translateY(12rem);
+}
+
+h2 {
+  text-align: center;
+}
+
+.converter-container {
+  margin-top: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5%;
+}
+
+.converter-container > img {
+  width: 20px;
+  height: 20px;
+}
+
+.combobox {
+  display: flex;
+  gap: 20px;
+}
+
+.combobox-dropdown > div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ant-select-selection-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ant-select-selection-item span {
+  font-weight: 600;
+}
+
+.amount-input {
+  padding: 0;
+}
+
+.currency-name {
+  box-sizing: border-box;
+  height: 100%;
+  padding: 7px;
+  border-right: 1px solid #d9d9d9;
+  font-weight: 600;
+}
+
+@media only screen and (max-width: 1300px) {
+  .container {
+    width: 90%;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .container {
+    width: 70%;
+    padding: 3rem 2% 5rem;
+    transform: translateY(8rem);
+  }
+
+  .converter-container {
+    flex-direction: column;
+    gap: 20px
+  }
+
+  .converter-container > img {
+    transform: rotate(90deg);
+  }
+}
+
+@media only screen and (max-width: 520px) {
+  .container {
+    width: 85%;
+  }
+
+  h2 {
+    padding: 1rem 0;
+  }
+
+}
