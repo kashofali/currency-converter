@@ -1,26 +1,22 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Input, Select } from "antd";
 
 function Combobox(props) {
-    const { name, countryList, handleChange, value, ignoreVal, currencyVal, handleCurrency } = props
-
-    useEffect(() => {
-      console.log(value && Object.values(value[0]?.currencies)[0].symbol)
-    }, [value])
+    const { name, countryList, handleChange, value, currencyVal, handleCurrency } = props
 
     return (
-      <div>
-        <Select size="large" onChange={e => handleChange(name, e)} showSearch value={value?.name?.common} placeholder="Select currency">
-          {countryList?.filter(val => val !== ignoreVal).map(ele => {
+      <div className="combobox">
+        <Select size="large" onChange={e => handleChange(name, e)} showSearch value={value?.name?.common} placeholder="Select currency" title={value?.name?.common}>
+          {countryList?.map(ele => {
             return (
-              <Select.Option key={ele.name.common} value={ele.name.common}>
+              <Select.Option className="combobox-dropdown" key={ele.name.common} value={ele.name.common} title={ele.name.common}>
                 <img height="20px" width="20px" src={ele.flags.svg} alt={ele.flags.alt}/>
-                {ele.cca3}
+                <span>{ele.cca3}</span>
               </Select.Option>
             )
           })}
         </Select>
-        <Input value={currencyVal} onChange={(e) => handleCurrency(name, e)} placeholder="Enter Amount" prefix={<span>{value && Object.keys(value[0]?.currencies)} : {value && Object.values(value[0]?.currencies)[0].symbol}</span>}/>
+        <Input className="amount-input" style={{"paddingLeft": value ? "0" : "14px" }} disabled={!value} value={currencyVal} onChange={(e) => handleCurrency(name, e)} placeholder="Enter Amount" size="large" prefix={value && <span className="currency-name">{value && Object.keys(value?.currencies)} {value && Object.values(value?.currencies)[0].symbol}</span>}/>
       </div>
     )
 }
